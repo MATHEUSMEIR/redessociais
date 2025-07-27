@@ -1,148 +1,150 @@
-@keyframes animacao {
-  from { background-color: antiquewhite; }
-  to { background-color: rgb(240, 207, 164); }
+@keyframes animacao{
+  from {background-color: antiquewhite;}
+  to {background-color: rgb(240, 207, 164);}
 }
 
 *, *:before, *:after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  background: rgb(187, 111, 57);
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  padding: 20px;
-  min-height: 100vh;
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 40px;
-  color: #fff;
-  font-size: 2rem;
-}
-
-/* Bolhas decorativas */
-.bolha1, .bolha2, .bolha3 {
-  position: absolute;
-  border-radius: 50%;
-  animation: animacao 30s infinite alternate;
-  z-index: -1;
-  opacity: 0.3;
-}
-
-.bolha2 {
-  top: 10%;
-  left: 10%;
-  width: 100px;
-  height: 100px;
-}
-
-.bolha3 {
-  bottom: 10%;
-  right: 10%;
-  width: 150px;
-  height: 150px;
-}
-
-/* Botões */
-.buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.blob-btn {
-  position: relative;
-  padding: 16px 32px;
-  color: rgb(139,69,19);
-  font-size: 1rem;
-  font-weight: bold;
-  background-color: transparent;
-  border: 2px solid rgb(139,69,19);
-  border-radius: 30px;
-  text-decoration: none;
-  text-transform: uppercase;
-  cursor: pointer;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.blob-btn:hover {
-  transform: scale(1.05);
-}
-
-.blob-btn__inner {
-  z-index: -1;
-  overflow: hidden;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 30px;
-  background: rgb(236, 202, 150);
-}
-
-.blob-btn__blobs {
-  position: relative;
-  display: block;
-  height: 100%;
-  filter: url("#goo");
-}
-
-.blob-btn__blob {
-  position: absolute;
-  top: 2px;
-  width: 25%;
-  height: 100%;
-  background: rgb(247, 225, 192);
-  border-radius: 100%;
-  transform: translate3d(0, 150%, 0) scale(1.4);
-  transition: transform 0.45s;
-}
-
-.blob-btn__blob:nth-child(1) { left: 0%; transition-delay: 0s; }
-.blob-btn__blob:nth-child(2) { left: 30%; transition-delay: 0.08s; }
-.blob-btn__blob:nth-child(3) { left: 60%; transition-delay: 0.16s; }
-.blob-btn__blob:nth-child(4) { left: 90%; transition-delay: 0.24s; }
-
-.blob-btn:hover .blob-btn__blob {
-  transform: translateZ(0) scale(1.7);
-}
-
-/* Responsividade */
-@media screen and (max-width: 768px) {
-  h1 {
-    font-size: 1.5rem;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body, h1 {
+    background: rgb(187, 111, 57);;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
   }
 
-  .blob-btn {
-    width: 80%;
+
+
+  .bolha2 {
+    margin-top: -800px;
+    width: 4%;
+    height: 80%;
+    padding: 100px;
+    border-radius: 900px;
+    animation-name: animacao;
+    animation-duration: 30s;
+  }
+
+  .bolha3 {
+    margin-top: -700px;
+    width: 350px;
+    height: 400px;
+    padding: 100px;
+    border-radius: 0px 50px 100px 10px;
+
+    animation-name: animacao;
+    animation-duration: 30s;
+  }
+  
+  .buttons, h1 {
+    margin-top: 50px;
     text-align: center;
-    font-size: 0.9rem;
-    padding: 14px 20px;
+    border-radius: 30px;
   }
-
-  .buttons {
-    gap: 15px;
-  }
-
-  .bolha2, .bolha3 {
-    width: 80px;
-    height: 80px;
-  }
-}
-
-@media screen and (min-width: 1025px) {
+  
   .blob-btn {
-    font-size: 1.2rem;
-    padding: 18px 40px;
+    z-index: 1;
+    position: relative;
+    padding: 20px 46px;
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    color: rgb(139,69,19);
+    font-size: 16px;
+    font-weight: bold;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    transition: color 0.5s;
+    cursor: pointer;
+    border-radius: 30px;
   }
-
-  .buttons {
-    gap: 30px;
+  .blob-btn:before {
+    content: "";
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgb(139,69,19);
+    border-radius: 30px;
   }
-}
+  .blob-btn:after {
+    content: "";
+    z-index: -2;
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s 0.2s;
+    border-radius: 30px;
+  }
+  .blob-btn:hover {
+    color: rgb(139,69,19);
+    border-radius: 30px;
+  }
+  .blob-btn:hover:after {
+    transition: all 0.3s;
+    left: 0;
+    top: 0;
+    border-radius: 30px;
+  }
+  .blob-btn__inner {
+    z-index: -1;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    background:  rgb(236, 202, 150);
+  }
+  .blob-btn__blobs {
+    position: relative;
+    display: block;
+    height: 100%;
+    filter: url("#goo");
+  }
+  .blob-btn__blob {
+    position: absolute;
+    top: 2px;
+    width: 25%;
+    height: 100%;
+    background: rgb(247, 225, 192);
+    border-radius: 100%;
+    transform: translate3d(0, 150%, 0) scale(1.7);
+    transition: transform 0.45s;
+  }
+  @supports (filter: url("#goo")) {
+    .blob-btn__blob {
+      transform: translate3d(0, 150%, 0) scale(1.4);
+    }
+  }
+  .blob-btn__blob:nth-child(1) {
+    left: 0%;
+    transition-delay: 0s;
+  }
+  .blob-btn__blob:nth-child(2) {
+    left: 30%;
+    transition-delay: 0.08s;
+  }
+  .blob-btn__blob:nth-child(3) {
+    left: 60%;
+    transition-delay: 0.16s;
+  }
+  .blob-btn__blob:nth-child(4) {
+    left: 90%;
+    transition-delay: 0.24s;
+  }
+  .blob-btn:hover .blob-btn__blob {
+    transform: translateZ(0) scale(1.7);
+  }
+  @supports (filter: url("#goo")) {
+    .blob-btn:hover .blob-btn__blob {
+      transform: translateZ(0) scale(1.4);
+    }
+  }
